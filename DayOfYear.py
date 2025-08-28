@@ -25,20 +25,21 @@ def days_in_month(year,month):
         return 30
     else:
         return 31
-
-test_years = [1900, 2000, 2016, 1987]
-test_months = [2, 2, 1, 12]
-test_results = [28, 29, 31, 30]#the last argument is intentionally incorrect
-for i in range(len(test_years)):
-    yr = test_years[i]
-    mo = test_months[i]
-    print(yr, mo, "->", end=" ")
-    result = days_in_month(yr, mo)
-    if result==-1:
-        print("Błędny numer miesiąca")
-        continue
-    if result == test_results[i]:
-        print(f"OK {result}")
-    else:
-        print(f"Failed {result}")
+# ********************************************************************************
+# NEW FUNCTION/NEXT FEATURE
+def day_of_year(year, month, day):
+    # validation
+    if not (1<=month<=12):
+        raise ValueError("Invalid month")
+    max_day = days_in_month(year,month)
+    if not (1<=day<=max_day):
+        raise ValueError("Invalid day for this month")
+    day_counter=0
+    for m in range(1, month):
+        day_counter+=days_in_month(year,m)
+    return day_counter + day
+            
     
+    
+print(day_of_year(2025, 8, 28))
+# *********************************************************************************
