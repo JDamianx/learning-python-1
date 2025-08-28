@@ -8,13 +8,14 @@ def is_year_leap(year):
     else:
         return False
     # return year % 400 == 0 or (year % 4 == 0 and year % 100 != 0)
-months_31_days=[month for month in range(1,8,2)]+[month for month in range(8,13,2)]
+    # different version without if conditions(one line)
+# months_31_days=[month for month in range(1,8,2)]+[month for month in range(8,13,2)] not in use
 months_30_days=[month for month in range(2,7,2)if month!=2]+[month for month in range(9,12,2)]
-
-
+# We can simplify these lists, but I chose to use list comprehension.
 def days_in_month(year,month):
     if not(1<=month<=12):
         return -1
+    # checks if month is valid
     if month==2:
         if is_year_leap(year)==True:
             return 29
