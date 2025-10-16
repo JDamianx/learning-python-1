@@ -97,13 +97,27 @@
 # Zrób to na spokojnie, tylko z yield, bez list pomocniczych.
 # Jak gotowe — pokaż mi swój kod, a potem razem rozbierzemy go linijka po linijce.
 # Dodana wartość porównywana obok Bool
-def growth_trend(numbers):
-    previous=numbers[0]
-    for number in numbers[1:]:
-        if number>previous:
-            yield (number,True)
-        else:
-            yield (number,False)
-        previous=number
-for trend in growth_trend([3, 5, 4, 7, 7, 9]):
-    print(trend)
+# def growth_trend(numbers):
+#     previous=numbers[0]
+#     for number in numbers[1:]:
+#         if number>previous:
+#             yield (number,True)
+#         else:
+#             yield (number,False)
+#         previous=number
+# for trend in growth_trend([3, 5, 4, 7, 7, 9]):
+#     print(trend)
+# ***************************************************************************************************
+# ***************************************************************************************************
+# Generator który pobiera i oddaje dane
+def echo():
+    print("Startuję generator...")
+    while True:
+        value = yield
+        print("Odebrałem:", value)
+
+gen = echo()
+next(gen)          # uruchamia generator do pierwszego yielda
+gen.send("Damian")
+gen.send("Martyna")
+gen.send("Koniec")
