@@ -40,16 +40,16 @@
 # 🔹 Jeśli użytkownik poda indeks spoza zakresu — złap IndexError.
 # 🔹 Jeśli wpisze coś, co nie jest liczbą — złap ValueError.
 
-lista = [10, 20, 30]
-try:
-    select=int(input("Podaj numer indexu: "))
-    print(lista[select])
-except IndexError:
-    print("podałeś nieistniejący numer indexu!")
-except ValueError:
-    print("to nie jest liczba")
-else:
-    print("Sukces!")
+# lista = [10, 20, 30]
+# try:
+#     select=int(input("Podaj numer indexu: "))
+#     print(lista[select])
+# except IndexError:
+#     print("podałeś nieistniejący numer indexu!")
+# except ValueError:
+#     print("to nie jest liczba")
+# else:
+#     print("Sukces!")
 # *******************************************************************************************************
 # *******************************************************************************************************
 
@@ -59,6 +59,12 @@ else:
 # 🔹 Jeśli plik nie istnieje — złap FileNotFoundError i wypisz komunikat
 # "Nie znaleziono pliku!".
 # 🔹 W finally wypisz "Zakończono operację pliku.".
+try:
+    file=open("dane.txt")
+except FileNotFoundError:
+    print("nie znaleziono takiego pliku!")
+finally:
+    print("zakończono operację!")
 # *******************************************************************************************************
 # *******************************************************************************************************
 
