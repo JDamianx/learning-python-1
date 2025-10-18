@@ -110,14 +110,14 @@
 # ***************************************************************************************************
 # ***************************************************************************************************
 # Generator który pobiera i oddaje dane
-def echo():
-    print("Startuję generator...")
-    while True:
-        value = yield
-        print("Odebrałem:", value)
+# def echo():
+#     print("Startuję generator...")
+#     while True:
+#         value = yield
+#         print("Odebrałem:", value)
 
-gen = echo()
-next(gen)          # uruchamia generator do pierwszego yielda
-gen.send("Damian")
-gen.send("Martyna")
-gen.send("Koniec")
+# gen = echo()
+# next(gen)          # uruchamia generator do pierwszego yielda
+# gen.send("Damian")
+# gen.send("Martyna")
+# gen.send("Koniec")

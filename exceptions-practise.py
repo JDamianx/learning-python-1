@@ -12,9 +12,30 @@
 
 # Podaj liczbę: abc
 # To nie jest liczba!
-
 # Podaj liczbę: 4
 # Wynik: 25.0
+
+try:
+    number=int(input("Podaj liczbe: "))
+    result=100/number
+except ZeroDivisionError:
+    print("nie dzielimy przez zero! ")
+except ValueError:
+    print("to nie liczba! ")
+else:
+    print(result)
+finally:
+    print("koniec programu!")
+
+
+
+
+
+
+
+
+
+
 # *******************************************************************************************************
 # *******************************************************************************************************
 # Zadanie 2 — lista i IndexError

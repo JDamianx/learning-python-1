@@ -350,7 +350,8 @@
 
 # 4 – kończy działanie (break)
 
-# Jeśli ktoś wpisze coś innego → komunikat o błędzie i menu pokazuje się znowu
+# Jeśli ktoś wpisze coś 2
+# innego → komunikat o błędzie i menu pokazuje się znowu
 
 # Podpowiedzi logiczne (bez kodu):
 

@@ -16,10 +16,8 @@
 # *****************************************************************
 def filter_errors(lines):
     for line in lines:
-        if "ERROR:" in line:
+        if "ERROR" in line:
             yield line
-        else:
-            continue
 
 
 
