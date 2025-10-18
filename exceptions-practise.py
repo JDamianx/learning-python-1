@@ -59,12 +59,12 @@
 # 🔹 Jeśli plik nie istnieje — złap FileNotFoundError i wypisz komunikat
 # "Nie znaleziono pliku!".
 # 🔹 W finally wypisz "Zakończono operację pliku.".
-try:
-    file=open("dane.txt")
-except FileNotFoundError:
-    print("nie znaleziono takiego pliku!")
-finally:
-    print("zakończono operację!")
+# try:
+#     file=open("dane.txt")
+# except FileNotFoundError:
+#     print("nie znaleziono takiego pliku!")
+# finally:
+#     print("zakończono operację!")
 # *******************************************************************************************************
 # *******************************************************************************************************
 
@@ -78,3 +78,15 @@ finally:
 
 # 🔹 Spróbuj wykonać dzielenie A / B.
 # 🔹 Złap oba błędy (ValueError i ZeroDivisionError) w jednym except, np.:
+try:
+    a=int(input("Wprowadź licznik: "))
+    b=int(input("Wprowadź mianownik: "))
+    result=a/b
+except ValueError:
+    print("nie wprowadziłeś cyfry!")
+except ZeroDivisionError:
+    print("nie dziel przez zero")
+else:
+    print(result)
+finally:
+    print("koniec programu!-")
