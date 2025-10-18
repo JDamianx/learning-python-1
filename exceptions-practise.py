@@ -15,27 +15,17 @@
 # Podaj liczbę: 4
 # Wynik: 25.0
 
-try:
-    number=int(input("Podaj liczbe: "))
-    result=100/number
-except ZeroDivisionError:
-    print("nie dzielimy przez zero! ")
-except ValueError:
-    print("to nie liczba! ")
-else:
-    print(result)
-finally:
-    print("koniec programu!")
-
-
-
-
-
-
-
-
-
-
+# try:
+#     number=int(input("Podaj liczbe: "))
+#     result=100/number
+# except ZeroDivisionError:
+#     print("nie dzielimy przez zero! ")
+# except ValueError:
+#     print("to nie liczba! ")
+# else:
+#     print(result)
+# finally:
+#     print("koniec programu!")
 # *******************************************************************************************************
 # *******************************************************************************************************
 # Zadanie 2 — lista i IndexError
@@ -49,6 +39,17 @@ finally:
 # 🔹 Spróbuj wypisać element o tym indeksie.
 # 🔹 Jeśli użytkownik poda indeks spoza zakresu — złap IndexError.
 # 🔹 Jeśli wpisze coś, co nie jest liczbą — złap ValueError.
+
+lista = [10, 20, 30]
+try:
+    select=int(input("Podaj numer indexu: "))
+    print(lista[select])
+except IndexError:
+    print("podałeś nieistniejący numer indexu!")
+except ValueError:
+    print("to nie jest liczba")
+else:
+    print("Sukces!")
 # *******************************************************************************************************
 # *******************************************************************************************************
 
