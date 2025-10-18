@@ -58,10 +58,7 @@
 # **********************************************************************************************************
 sentence=input("Wpisz tekst do policzenia ilości wystąpień: ")
 words=sentence.split()
-counts={}
+word_count={}
 for word in words:
-    if word in counts:
-        counts[word]+=1
-    else:
-        counts[word]=1
-print(counts)
+    word_count[word] = word_count.get(word, 0) + 1
+print(word_count)
