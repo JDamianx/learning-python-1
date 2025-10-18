@@ -78,15 +78,41 @@
 
 # 🔹 Spróbuj wykonać dzielenie A / B.
 # 🔹 Złap oba błędy (ValueError i ZeroDivisionError) w jednym except, np.:
+# try:
+#     a=int(input("Wprowadź licznik: "))
+#     b=int(input("Wprowadź mianownik: "))
+#     result=a/b
+# except ValueError:
+#     print("nie wprowadziłeś cyfry!")
+# except ZeroDivisionError:
+#     print("nie dziel przez zero")
+# else:
+#     print(result)
+# finally:
+#     print("koniec programu!-")
+
+# *******************************************************************************************************
+# *******************************************************************************************************
+# Zadanie 5
+
+# Napisz program, który:
+
+# Prosi użytkownika o podanie liczby.
+
+# Próbuje policzyć 10 / liczba.
+
+# Jeśli coś pójdzie nie tak, złapie błąd za pomocą Exception as e
+
+# Wypisze typ błędu i treść błędu.
+
+# Na końcu zawsze wypisze "Koniec programu."
 try:
-    a=int(input("Wprowadź licznik: "))
-    b=int(input("Wprowadź mianownik: "))
-    result=a/b
-except ValueError:
-    print("nie wprowadziłeś cyfry!")
-except ZeroDivisionError:
-    print("nie dziel przez zero")
+    number=int(input("podaj liczbę: "))
+    result=10/number
+except Exception as e:
+    print("Błąd typu:",type(e).__name__)
+    print("Treść błędu:",e)
 else:
     print(result)
 finally:
-    print("koniec programu!-")
+    print("Koniec programu!")
