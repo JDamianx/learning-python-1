@@ -56,9 +56,93 @@
 
 # {'damian': 2, 'lubi': 1, 'python': 2, 'bo': 1, 'uczy': 1, 'się': 1}
 # **********************************************************************************************************
-sentence=input("Wpisz tekst do policzenia ilości wystąpień: ")
-words=sentence.split()
-word_count={}
-for word in words:
-    word_count[word] = word_count.get(word, 0) + 1
-print(word_count)
+# sentence=input("Wpisz tekst do policzenia ilości wystąpień: ")
+# words=sentence.split()
+# word_count={}
+# for word in words:
+#     word_count[word] = word_count.get(word, 0) + 1
+# print(word_count)
+# **********************************************************************************************************
+# **********************************************************************************************************
+
+# info = {"imie": "Damian","wiek":"12"}
+# print(info.get("wiek", "Brak danych"))
+# print(info.get("imie", "Brak danych"))
+# **********************************************************************************************************
+# **********************************************************************************************************
+# zadanie: „Sprawdź dane użytkownika”
+
+# Masz słownik:
+
+# user = {"imie": "Damian", "miasto": "Kraków"}
+
+# 🔹 Zrób program, który:
+
+# Poprosi użytkownika o wpisanie klucza, np. "wiek", "miasto", "auto", itd.
+
+# Sprawdzi, czy taki klucz istnieje w słowniku.
+
+# Jeśli istnieje → wypisze wartość.
+
+# Jeśli nie istnieje → wypisze "Brak danych" (użyj .get()).
+
+# 💡 Przykładowe działanie:
+# Podaj klucz: miasto
+# Kraków
+
+# Podaj klucz: wiek
+# Brak danych
+
+# **********************************************************************************************************
+
+# user = {"imie": "Damian", "miasto": "Kraków"}
+# guess=input("Zgadnij klucz: ")
+# print(user.get(guess,"Brak danych"))
+# **********************************************************************************************************
+# **********************************************************************************************************
+# Zadanie 1 — sklep
+
+# Masz:
+
+# ceny = {"jabłko": 3, "banan": 4, "gruszka": 5}
+
+
+# Program:
+
+# pyta użytkownika o nazwę owocu,
+
+# wypisuje cenę, jeśli istnieje,
+
+# albo "Brak w sklepie" jeśli nie ma.
+
+# **********************************************************************************************************
+# ceny = {"jabłko": 3, "banan": 4, "gruszka": 5}
+# fruit=input("Podaj nazwę owocu: ")
+# print(ceny.get(fruit,"Brak w sklepie"))
+# **********************************************************************************************************
+# **********************************************************************************************************
+# Zadanie 2 — loginy
+# loginy = {"damian": "qwerty", "bartek": "abc123"}
+
+
+# Użytkownik wpisuje login → wypisz hasło, jeśli istnieje,
+# w przeciwnym razie "Nie znaleziono użytkownika".
+
+# **********************************************************************************************************
+# loginy = {"damian": "qwerty", "bartek": "abc123"}
+# login=input("Wpisz login: ")
+# print(loginy.get(login,"Nie znaleziono użytkownika"))
+
+# **********************************************************************************************************
+# **********************************************************************************************************
+# Zadanie 3 — kraj i stolica
+# kraje = {"Polska": "Warszawa", "Francja": "Paryż", "Niemcy": "Berlin"}
+
+
+# Użytkownik wpisuje nazwę kraju.
+# Program ma wypisać jego stolicę, a jeśli kraju nie ma → "Nie znam takiego kraju"
+
+# **********************************************************************************************************
+kraje = {"Polska": "Warszawa", "Francja": "Paryż", "Niemcy": "Berlin"}
+kraj=input("Wpisz nazwe kraju: ")
+print(kraje.get(kraj,"Nie znam takiego kraju"))
