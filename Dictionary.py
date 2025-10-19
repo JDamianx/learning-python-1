@@ -169,6 +169,90 @@
 
 # 💡 Idealne do przekształcania danych z list.
 # **********************************************************************************************************
-slowa = ["python", "dict", "code"]
-dlugosci = {s: len(s) for s in slowa}
-print(dlugosci)
+# slowa = ["python", "dict", "code"]
+# dlugosci = {s: len(s) for s in slowa}
+# print(dlugosci)
+# 2️⃣ Odwracanie słownika (zamiana kluczy z wartościami)
+# kraje = {"Polska": "Warszawa", "Niemcy": "Berlin"}
+# stolice = {v: k for k, v in kraje.items()}
+# print(stolice)
+# **********************************************************************************************************
+# 3️⃣ Łączenie słowników w jeden (Python 3.9+)
+
+# Od wersji Pythona 3.9 możesz po prostu:
+
+# a = {"imie": "Damian","miasto":"Rzeszów"}
+# b = {"miasto": "Kraków"}
+# c = a | b
+# print(c)
+
+# Lub nadpisywanie:
+
+# c = a | {"imie": "Bartek"}
+
+
+# 💡 To szybsze niż update() i nie zmienia oryginału.
+# **********************************************************************************************************
+# 🧱 5️⃣ Zagnieżdżone słowniki
+
+# Masz dane „w środku danych”:
+
+# baza = {
+#     "Damian": {"wiek": 28, "auto": "Toyota"},
+#     "Bartek": {"wiek": 26, "auto": "BMW"}
+# }
+
+# print(baza["Bartek"]["auto"])  # BMW
+# # **********************************************************************************************************
+# 6️⃣ Zliczanie wystąpień (pro sposób z modułu collections)
+
+# Nie musisz robić pętli — Python ma to gotowe:
+
+# from collections import Counter
+# slowa = ["damian", "lubi", "python", "damian", "python", "python"]
+# print(dict(Counter(slowa)))
+# # **********************************************************************************************************
+# # **********************************************************************************************************
+# Zadanie 1 — Licznik długości słów
+
+# Masz listę:
+
+# slowa = ["python", "dict", "code", "damian", "ai"]
+
+
+# Stwórz słownik, w którym:
+
+# klucz = słowo
+
+# wartość = długość tego słowa
+
+# 💡 wynik powinien być:
+# {'python': 6, 'dict': 4, 'code': 4, 'damian': 6, 'ai': 2}
+# # **********************************************************************************************************
+# slowa = ["python", "dict", "code", "damian", "ai"]
+# licznik_liter={}
+# for slowo in slowa:
+#     licznik_liter[slowo]=len(slowo)
+# print(licznik_liter)
+
+# # **********************************************************************************************************
+# # # **********************************************************************************************************
+# Zadanie 2 — Najlepszy zawodnik
+
+# Masz:
+
+# punkty = {"Damian": 80, "Bartek": 65, "Kuba": 92, "Michał": 88}
+
+
+# Wypisz imię zawodnika, który ma najwięcej punktów, w formacie:
+
+# Najlepszy: Kuba (92 pkt)
+# # # **********************************************************************************************************
+# punkty = {"Damian": 80, "Bartek": 65, "Kuba": 92, "Michał": 88}
+# najlepszy = max(punkty, key=punkty.get)
+# print("Najlepszy:", najlepszy, "(", punkty[najlepszy], "pkt)")
+
+punkty = {"Damian": 80, "Bartek": 65, "Kuba": 92, "Michał": 88}
+
+najlepszy = max(punkty, key=punkty.get())
+print("Najlepszy:", najlepszy, "(", punkty[najlepszy], "pkt)")
