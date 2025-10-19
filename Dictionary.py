@@ -252,7 +252,7 @@
 # najlepszy = max(punkty, key=punkty.get)
 # print("Najlepszy:", najlepszy, "(", punkty[najlepszy], "pkt)")
 
-punkty = {"Damian": 80, "Bartek": 65, "Kuba": 92, "Michał": 88}
+# punkty = {"Damian": 80, "Bartek": 65, "Kuba": 92, "Michał": 88}
 
-najlepszy = max(punkty, key=punkty.get())
-print("Najlepszy:", najlepszy, "(", punkty[najlepszy], "pkt)")
+# najlepszy = max(punkty, key=punkty.get())
+# print("Najlepszy:", najlepszy, "(", punkty[najlepszy], "pkt)")
