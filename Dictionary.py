@@ -98,6 +98,7 @@
 # user = {"imie": "Damian", "miasto": "Kraków"}
 # guess=input("Zgadnij klucz: ")
 # print(user.get(guess,"Brak danych"))
+
 # **********************************************************************************************************
 # **********************************************************************************************************
 # Zadanie 1 — sklep
@@ -143,6 +144,31 @@
 # Program ma wypisać jego stolicę, a jeśli kraju nie ma → "Nie znam takiego kraju"
 
 # **********************************************************************************************************
-kraje = {"Polska": "Warszawa", "Francja": "Paryż", "Niemcy": "Berlin"}
-kraj=input("Wpisz nazwe kraju: ")
-print(kraje.get(kraj,"Nie znam takiego kraju"))
+# kraje = {"Polska": "Warszawa", "Francja": "Paryż", "Niemcy": "Berlin"}
+# kraj=input("Wpisz nazwe kraju: ")
+# print(kraje.get(kraj,"Nie znam takiego kraju"))
+# **********************************************************************************************************
+# **********************************************************************************************************
+# 1️⃣ Dictionary comprehension — tworzenie słownika w jednej linijce
+
+# To taki „generator” słownika, podobny do list comprehension.
+
+# slowa = ["python", "dict", "code"]
+# dlugosci = {s: len(s) for s in slowa}
+# print(dlugosci)
+
+
+# ➡️ wynik:
+
+# {'python': 6, 'dict': 4, 'code': 4}
+
+
+# czyli:
+
+# “dla każdego słowa z listy zrób klucz = słowo, wartość = jego długość”
+
+# 💡 Idealne do przekształcania danych z list.
+# **********************************************************************************************************
+slowa = ["python", "dict", "code"]
+dlugosci = {s: len(s) for s in slowa}
+print(dlugosci)
