@@ -55,4 +55,4 @@ best=[w for w, v in word_count.items() if v==max_value]
 
 
 
-print("Najczęściej używany wyraz to:",best,"i został użyty:",max_value )
+print("Najczęściej używany wyraz to:", " i ".join(best),",a został użyty:",max_value )
