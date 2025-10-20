@@ -51,8 +51,4 @@ for word in words:
 # most_used_word=max(word_count, key=word_count.get)
 max_value=max(word_count.values())
 best=[w for w, v in word_count.items() if v==max_value]
-
-
-
-
 print("Najczęściej używany wyraz to:", " i ".join(best),",a został użyty:",max_value )
