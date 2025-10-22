@@ -228,6 +228,39 @@ b = {"banany": 4, "gruszki": 1, "śliwki": 7}
 # wynik to nowy słownik w formacie:
 
 # {'Damian': 6480.0, 'Bartek': 4590.0, 'Kuba': 4600, 'Michał': 7200.0}]
-pensje = {"Damian": 7200, "Bartek": 5100, "Kuba": 4600, "Michał": 8000}
-after_tax={k:v-(v*0.1)if v>5000 else v for k,v in pensje.items()}
-print(after_tax)
+# *******************************************************************************************
+# pensje = {"Damian": 7200, "Bartek": 5100, "Kuba": 4600, "Michał": 8000}
+# after_tax={k:v-(v*0.1)if v>5000 else v for k,v in pensje.items()}
+# print(after_tax)
+# *******************************************************************************************
+# *******************************************************************************************
+# Zadanie 5 — „Boss level” z dict comprehension
+
+# Masz taki słownik uczniów i ich ocen z testu:
+
+# oceny = {
+#     "Damian": [90, 100, 85],
+#     "Bartek": [40, 55, 60],
+#     "Kuba": [75, 80, 70],
+#     "Michał": [95, 92, 88],
+# }
+
+
+# Twoje zadanie:
+
+# oblicz średnią ocen dla każdego ucznia,
+
+# uwzględnij tylko tych, których średnia ≥ 70,
+
+# wynik to nowy słownik z ich imieniem i średnią, np.:
+
+# {'Damian': 91.67, 'Kuba': 75.0, 'Michał': 91.67}
+# *******************************************************************************************
+oceny = {
+    "Damian": [90, 100, 85],
+    "Bartek": [40, 55, 60],
+    "Kuba": [75, 80, 70],
+    "Michał": [95, 92, 88],
+}
+avrg_top={k:round(sum(v)/len(v),2) for k,v in oceny.items() if sum(v)/len(v)>70}
+print(avrg_top)
