@@ -136,5 +136,77 @@
 # *******************************************************************************************
 a = {"jabłka": 3, "banany": 2, "gruszki": 5}
 b = {"banany": 4, "gruszki": 1, "śliwki": 7}
-c=a|b
-print(c)
+# for k,v in b.items():
+#     if k in a:
+#         a[k]+=v
+#     else:
+#         a[k]=v
+# print(a)
+# for k,v in b.items():
+#     c={k:a.get(k,0)+b.get(k,0) for k in a|b}
+
+# print(c)
+
+
+# *******************************************************************************************
+# *******************************************************************************************
+# Zadanie 1 — „długość słów”
+
+# Masz listę:
+
+# slowa = ["python", "jest", "mega", "sztosem"]
+
+
+# Napisz dict comprehension, które stworzy słownik w formacie:
+
+# {"python": 6, "jest": 4, "mega": 4, "sztosem": 7}
+
+# *******************************************************************************************
+# slowa = ["python", "jest", "mega", "sztosem"]
+# number_of_letters={k:len(k) for k in slowa}
+# print(number_of_letters)
+# *******************************************************************************************
+# *******************************************************************************************
+# Zadanie 2 — filtr w comprehension
+
+# Masz znowu tę samą listę:
+
+# slowa = ["python", "jest", "mega", "sztosem"]
+
+
+# Zrób dict comprehension, które zbuduje słownik tylko dla słów dłuższych niż 4 litery,
+# czyli wynik ma być:
+
+# {"python": 6, "sztosem": 7}
+
+
+# Podpowiedź:
+# na końcu comprehension możesz dodać warunek, np.
+
+# {k: coś for k in slowa if ...}
+# *******************************************************************************************
+# slowa = ["python", "jest", "mega", "sztosem"]
+# filtered={k:len(k) for k in slowa if len(k)>4}
+# print(filtered)
+# *******************************************************************************************
+# *******************************************************************************************
+# Zadanie 3 — podatek od pensji
+
+# Masz słownik z pensjami pracowników:
+
+# pensje = {"Damian": 7200, "Bartek": 5100, "Kuba": 4600, "Michał": 8000}
+
+
+# Twoje zadanie:
+
+# policz 10% podatek dla każdego,
+
+# zwróć nowy słownik, gdzie klucz to imię, a wartość to kwota po potrąceniu podatku.
+
+# czyli wynik ma wyglądać np. tak:
+
+# {'Damian': 6480.0, 'Bartek': 4590.0, 'Kuba': 4140.0, 'Michał': 7200.0}
+# *******************************************************************************************
+pensje = {"Damian": 7200, "Bartek": 5100, "Kuba": 4600, "Michał": 8000}
+after_tax={k:v-(v*0.1) for k,v in pensje.items()}
+print(after_tax)
