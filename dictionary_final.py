@@ -207,6 +207,27 @@ b = {"banany": 4, "gruszki": 1, "śliwki": 7}
 
 # {'Damian': 6480.0, 'Bartek': 4590.0, 'Kuba': 4140.0, 'Michał': 7200.0}
 # *******************************************************************************************
+# pensje = {"Damian": 7200, "Bartek": 5100, "Kuba": 4600, "Michał": 8000}
+# after_tax={k:v-(v*0.1) for k,v in pensje.items()}
+# print(after_tax)
+# *******************************************************************************************
+# *******************************************************************************************
+# Zadanie 4 — selektywny podatek
+
+# Masz znowu:
+
+# pensje = {"Damian": 7200, "Bartek": 5100, "Kuba": 4600, "Michał": 8000}
+
+
+# Twoje zadanie:
+
+# potrąć 10% podatku tylko tym, którzy zarabiają więcej niż 5000,
+
+# pozostali mają bez zmian,
+
+# wynik to nowy słownik w formacie:
+
+# {'Damian': 6480.0, 'Bartek': 4590.0, 'Kuba': 4600, 'Michał': 7200.0}]
 pensje = {"Damian": 7200, "Bartek": 5100, "Kuba": 4600, "Michał": 8000}
-after_tax={k:v-(v*0.1) for k,v in pensje.items()}
+after_tax={k:v-(v*0.1)if v>5000 else v for k,v in pensje.items()}
 print(after_tax)
