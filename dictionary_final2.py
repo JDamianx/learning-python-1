@@ -138,11 +138,104 @@
 # ***********************************************************************************************
 # Zliczanie typów danych w liście
 # ***********************************************************************************************
-items = [1, "a", 2.5, "b", True, None, 3]
-types = {}
+# items = [1, "a", 2.5, "b", True, None, 3]
+# types = {}
 
-for i in items:
-    t = type(i).__name__
-    types[t] = types.get(t, 0) + 1
+# for i in items:
+#     t = type(i).__name__
+#     types[t] = types.get(t, 0) + 1
 
-print(types)
+# print(types)
+# ***********************************************************************************************
+# ***********************************************************************************************
+# Zliczanie słów w tekście (wersja prawdziwego kodera)
+# ***********************************************************************************************
+# text = "Python is great and Python is simple"
+# counts = {}
+# for word in text.lower().split():
+#     counts[word] = counts.get(word, 0) + 1
+
+# print(counts)
+# ***********************************************************************************************
+# ***********************************************************************************************
+# Tworzenie mapy „ostatni indeks wystąpienia”
+# ***********************************************************************************************
+# nums = [5, 2, 5, 3, 2, 5]
+# positions = {}
+
+# for idx, n in enumerate(nums):
+#     positions[n] = idx
+
+# print(positions)
+# ***********************************************************************************************
+# ***********************************************************************************************
+# Wzorzec
+# d[x] = d.get(x, 0) + 1	licznik (sumowanie wartości)
+# d[x] = d.get(x, []) + [nowy]	grupowanie elementów
+# `d[x] = d.get(x, set())	dodawanie unikalnych wartości
+# d[x] = coś	nadpisywanie (nie wymaga get)
+# ***********************************************************************************************
+# ***********************************************************************************************
+# Zadanie: analiza transakcji w sklepie
+
+# Masz listę zakupów, gdzie każda pozycja to (klient, produkt):
+
+# purchases = [
+#     ("Ala", "jabłko"),
+#     ("Olek", "gruszka"),
+#     ("Ala", "banan"),
+#     ("Olek", "jabłko"),
+#     ("Ala", "gruszka"),
+#     ("Basia", "banan"),
+#     ("Olek", "banan"),
+#     ("Basia", "jabłko"),
+# ]
+
+
+# Chcemy dowiedzieć się trzech rzeczy:
+
+# 1️⃣ Ile każdy klient zrobił zakupów?
+# (np. Ala: 3, Olek: 3, Basia: 2)
+
+# 2️⃣ Ile razy kupiono każdy produkt?
+# (np. jabłko: 3, banan: 3, gruszka: 2)
+
+# 3️⃣ Jakie produkty kupił każdy klient — jako lista (np. Ala: ['jabłko', 'banan', 'gruszka']).
+# Twoje zadanie
+
+# Spróbuj sam napisać kod, który:
+
+# tworzy trzy słowniki: client_counts, product_counts, client_items
+
+# w jednej pętli for name, item in purchases:
+
+# po zakończeniu drukuje każdy z nich.
+
+# ***********************************************************************************************
+
+purchases = [
+    ("Ala", "jabłko"),
+    ("Olek", "gruszka"),
+    ("Ala", "banan"),
+    ("Olek", "jabłko"),
+    ("Ala", "gruszka"),
+    ("Basia", "banan"),
+    ("Olek", "banan"),
+    ("Basia", "jabłko"),
+]
+client_counts={}
+for name, item in purchases:
+    client_counts[name]=client_counts.get(name,0)+1
+print(client_counts)
+print("******************************************************")
+
+product_counts={}
+for name, item in purchases:
+    product_counts[item]=product_counts.get(item,0)+1
+print(product_counts)
+print("******************************************************")
+
+client_items={}
+for name, item in purchases:
+    client_items[name]=client_items.get(item,[])+client_items[item]
+print(client_items)
