@@ -225,17 +225,17 @@ purchases = [
 ]
 client_counts={}
 for name, item in purchases:
-    client_counts[name]=client_counts.get(name,0)+1
+    client_counts[name]=client_counts.get(name,0)+1 # zliczanie .get()
 print(client_counts)
 print("******************************************************")
 
 product_counts={}
 for name, item in purchases:
-    product_counts[item]=product_counts.get(item,0)+1
+    product_counts[item]=product_counts.get(item,0)+1 # histogram 
 print(product_counts)
 print("******************************************************")
 
 client_items={}
 for name, item in purchases:
-    client_items[name]=client_items.get(item,[])+client_items[item]
+    client_items[name]=client_items.get(name, [])+ [item] # grupowanie
 print(client_items)
