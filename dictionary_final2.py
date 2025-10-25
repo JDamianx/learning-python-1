@@ -213,29 +213,95 @@
 
 # ***********************************************************************************************
 
+# purchases = [
+#     ("Ala", "jabłko"),
+#     ("Olek", "gruszka"),
+#     ("Ala", "banan"),
+#     ("Olek", "jabłko"),
+#     ("Ala", "gruszka"),
+#     ("Basia", "banan"),
+#     ("Olek", "banan"),
+#     ("Basia", "jabłko"),
+# ]
+# client_counts={}
+# for name, item in purchases:
+#     client_counts[name]=client_counts.get(name,0)+1 # zliczanie .get()
+# print(client_counts)
+# print("******************************************************")
+
+# product_counts={}
+# for name, item in purchases:
+#     product_counts[item]=product_counts.get(item,0)+1 # histogram 
+# print(product_counts)
+# print("******************************************************")
+
+# client_items={}
+# for name, item in purchases:
+#     client_items[name]=client_items.get(name, [])+ [item] # grupowanie
+# print(client_items)
+# ***********************************************************************************************
+# ***********************************************************************************************
+# Zadanie: Analizator zakupów klientów (wersja pro)
+
+# Masz dane transakcji z małego sklepu internetowego:
+
+# purchases = [
+#     ("Ala", "jabłko", 3),
+#     ("Olek", "gruszka", 1),
+#     ("Ala", "banan", 2),
+#     ("Olek", "jabłko", 5),
+#     ("Ala", "gruszka", 1),
+#     ("Basia", "banan", 4),
+#     ("Olek", "banan", 3),
+#     ("Basia", "jabłko", 2),
+# ]
+
+
+# Każdy wpis to (klient, produkt, ilość).
+
+# 🎯 Chcemy policzyć:
+
+# 1️⃣ łączną liczbę zakupów każdego klienta
+# → np. {'Ala': 6, 'Olek': 9, 'Basia': 6}
+
+# 2️⃣ łączną sprzedaż każdego produktu
+# → np. {'jabłko': 10, 'gruszka': 2, 'banan': 9}
+
+# 3️⃣ jakie produkty kupował każdy klient (bez duplikatów)
+# → np. {'Ala': {'jabłko', 'banan', 'gruszka'}, ...}
+# ***********************************************************************************************
+from collections import defaultdict
+
 purchases = [
-    ("Ala", "jabłko"),
-    ("Olek", "gruszka"),
-    ("Ala", "banan"),
-    ("Olek", "jabłko"),
-    ("Ala", "gruszka"),
-    ("Basia", "banan"),
-    ("Olek", "banan"),
-    ("Basia", "jabłko"),
+    ("Ala", "jabłko", 3),
+    ("Olek", "gruszka", 1),
+    ("Ala", "banan", 2),
+    ("Olek", "jabłko", 5),
+    ("Ala", "gruszka", 1),
+    ("Basia", "banan", 4),
+    ("Olek", "banan", 3),
+    ("Basia", "jabłko", 2),
 ]
-client_counts={}
-for name, item in purchases:
-    client_counts[name]=client_counts.get(name,0)+1 # zliczanie .get()
-print(client_counts)
-print("******************************************************")
 
-product_counts={}
-for name, item in purchases:
-    product_counts[item]=product_counts.get(item,0)+1 # histogram 
-print(product_counts)
-print("******************************************************")
+# 1️⃣ Łączna liczba zakupów każdego klienta
+client_total = defaultdict(int)
 
-client_items={}
-for name, item in purchases:
-    client_items[name]=client_items.get(name, [])+ [item] # grupowanie
-print(client_items)
+# 2️⃣ Łączna sprzedaż każdego produktu
+product_total = defaultdict(int)
+
+# 3️⃣ Produkty kupowane przez każdego klienta
+client_products = defaultdict(set)
+
+for name, item, qty in purchases:
+    client_total[name] += qty           # zlicza ilość zakupionych sztuk
+    product_total[item] += qty           # zlicza łączną sprzedaż produktu
+    client_products[name].add(item)      # dodaje produkt do zbioru (unikalne)
+
+print("🧾 Ilość zakupów klientów:")
+print(dict(client_total))
+
+print("\n🍎 Sprzedaż produktów:")
+print(dict(product_total))
+
+print("\n🛒 Produkty kupowane przez klientów:")
+print({k: list(v) for k, v in client_products.items()})
