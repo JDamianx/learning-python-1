@@ -270,38 +270,24 @@
 # 3️⃣ jakie produkty kupował każdy klient (bez duplikatów)
 # → np. {'Ala': {'jabłko', 'banan', 'gruszka'}, ...}
 # ***********************************************************************************************
-from collections import defaultdict
+# ***********************************************************************************************
+# Zadanie 1 — podstawowe łączenie danych
 
-purchases = [
-    ("Ala", "jabłko", 3),
-    ("Olek", "gruszka", 1),
-    ("Ala", "banan", 2),
-    ("Olek", "jabłko", 5),
-    ("Ala", "gruszka", 1),
-    ("Basia", "banan", 4),
-    ("Olek", "banan", 3),
-    ("Basia", "jabłko", 2),
-]
+# Masz dwa słowniki z informacjami o użytkowniku:
 
-# 1️⃣ Łączna liczba zakupów każdego klienta
-client_total = defaultdict(int)
+# person = {'name': 'Ala', 'age': 23}
+# contact = {'email': 'ala@example.com', 'phone': '123-456-789'}
 
-# 2️⃣ Łączna sprzedaż każdego produktu
-product_total = defaultdict(int)
 
-# 3️⃣ Produkty kupowane przez każdego klienta
-client_products = defaultdict(set)
+# Zadanie:
+# ➡️ Połącz je w jeden słownik person_info, używając update().
+# ➡️ Nie zmieniaj oryginalnych słowników (person, contact mają zostać takie same).
+# ***********************************************************************************************
 
-for name, item, qty in purchases:
-    client_total[name] += qty           # zlicza ilość zakupionych sztuk
-    product_total[item] += qty           # zlicza łączną sprzedaż produktu
-    client_products[name].add(item)      # dodaje produkt do zbioru (unikalne)
-
-print("🧾 Ilość zakupów klientów:")
-print(dict(client_total))
-
-print("\n🍎 Sprzedaż produktów:")
-print(dict(product_total))
-
-print("\n🛒 Produkty kupowane przez klientów:")
-print({k: list(v) for k, v in client_products.items()})
+person = {'name': 'Ala', 'age': 23}
+contact = {'email': 'ala@example.com', 'phone': '123-456-789'}
+person_info={}
+# person_info.update(person)
+# person_info.update(contact) # stare wersje pythona, pojedynczo
+person_info.update(**person, **contact) # od pythona 3.5
+print(person_info)
