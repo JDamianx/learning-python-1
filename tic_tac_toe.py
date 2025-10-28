@@ -39,9 +39,15 @@ display_board(board)
     # checks the input, and updates the board according to the user's decision.
 
 
-# def make_list_of_free_fields(board):
-
-
+def make_list_of_free_fields(board):
+    free_fields={}
+    for row in range(3):
+        for column in range(3):
+            value=board[row][column]
+            if value!="X" and value!="O":
+                free_fields[value]=(row,column)
+    return free_fields
+print(make_list_of_free_fields(board))
     # The function browses the board and builds a list of all the free squares; 
     # the list consists of tuples, while each tuple is a pair of row and column numbers.
 
@@ -57,6 +63,7 @@ def draw_move(board):
         move=randrange(1,100)
         if any(move in row for row in board): #check if randomized variable move is in board
             break
-    
-    
+    print(move)
+    return None
+draw_move(board)
     
