@@ -282,12 +282,185 @@
 # Zadanie:
 # ➡️ Połącz je w jeden słownik person_info, używając update().
 # ➡️ Nie zmieniaj oryginalnych słowników (person, contact mają zostać takie same).
-# ***********************************************************************************************
+# # ***********************************************************************************************
 
-person = {'name': 'Ala', 'age': 23}
-contact = {'email': 'ala@example.com', 'phone': '123-456-789'}
-person_info={}
-# person_info.update(person)
-# person_info.update(contact) # stare wersje pythona, pojedynczo
-person_info.update(**person, **contact) # od pythona 3.5
-print(person_info)
+# person = {'name': 'Ala', 'age': 23}
+# contact = {'email': 'ala@example.com', 'phone': '123-456-789'}
+# person_info={}
+# # person_info.update(person)
+# # person_info.update(contact) # stare wersje pythona, pojedynczo
+# person_info.update(**person, **contact) # od pythona 3.5
+# print(person_info)
+
+# # ***********************************************************************************************
+# # ***********************************************************************************************
+# Zadanie: “Aktualizacja bazy uczniów”
+
+# Masz bazę danych o uczniach — każdy ma:
+
+# imię,
+
+# informacje kontaktowe (contact),
+
+# oceny (grades).
+
+# 🧠 Punkt startowy:
+# students = {
+#     "Ala": {
+#         "contact": {"email": "ala@oldmail.com", "phone": "111-111-111"},
+#         "grades": {"math": 80, "english": 90}
+#     },
+#     "Olek": {
+#         "contact": {"email": "olek@school.com", "phone": "222-222-222"},
+#         "grades": {"math": 70, "english": 75}
+#     }
+# }
+
+
+# I dostajesz aktualizację danych z nowego pliku (np. formularz ucznia):
+
+# update_data = {
+#     "Ala": {
+#         "contact": {"email": "ala@newmail.com"},
+#         "grades": {"physics": 100}
+#     },
+#     "Olek": {
+#         "grades": {"english": 85, "math": 72}
+#     }
+# }
+
+# 🎯 Twoje zadanie:
+
+# Zaktualizuj students danymi z update_data, tak żeby:
+
+# 1️⃣ stare dane się zachowały (nie nadpisuj całych sekcji!),
+# 2️⃣ tylko podklucze (contact, grades) się zmieniły,
+# 3️⃣ dodaj nowe przedmioty, jeśli ich wcześniej nie było.
+
+# 💬 Oczekiwany wynik:
+# {
+#   'Ala': {
+#     'contact': {'email': 'ala@newmail.com', 'phone': '111-111-111'},
+#     'grades': {'math': 80, 'english': 90, 'physics': 100}
+#   },
+#   'Olek': {
+#     'contact': {'email': 'olek@school.com', 'phone': '222-222-222'},
+#     'grades': {'math': 72, 'english': 85}
+#   }
+# }
+# # ***********************************************************************************************
+# students = {
+#     "Ala": {
+#         "contact": {"email": "ala@oldmail.com", "phone": "111-111-111"},
+#         "grades": {"math": 80, "english": 90}
+#     },
+#     "Olek": {
+#         "contact": {"email": "olek@school.com", "phone": "222-222-222"},
+#         "grades": {"math": 70, "english": 75}
+#     }
+    
+# }
+# update_data = {
+#     "Ala": {
+#         "contact": {"email": "ala@newmail.com"},
+#         "grades": {"physics": 100}
+#     },
+#     "Olek": {
+#         "grades": {"english": 85, "math": 72}
+#     }
+# }
+# new_student={}
+# new_student.update(students)
+# for name,updates in update_data.items():
+#     if name in new_student:
+#         for section, new_data in updates.items():
+#             new_student[name][section].update(new_data)
+#         else:
+#             new_student[name]=updates
+# print(new_student)
+# # ***********************************************************************************************
+# # ***********************************************************************************************
+# Zadania:
+
+# Wypisz email ucznia.
+
+# Wypisz ocenę z angielskiego.
+
+# Zmień numer telefonu na "987".
+
+# Dodaj nowy przedmiot: "physics": 6.
+# # ***********************************************************************************************
+# student = {
+#     "name": "Ala",
+#     "info": {
+#         "contact": {"email": "ala@wp.pl", "phone": "123"},
+#         "grades": {"math": 5, "english": 4}
+#     }
+# }
+# print(student["info"]["contact"]["email"])
+# print(student["info"]["grades"]["english"])
+# student["info"]["contact"]["phone"]="987"
+# print(student["info"]["contact"]["phone"])
+# student["info"]["grades"]["physics"]="6"
+# print(student["info"]["grades"]["physics"])
+# # ***********************************************************************************************
+# # ***********************************************************************************************
+# Zadanie 2 – aktualizacja danych ucznia
+
+# Masz dwa słowniki:
+
+# student = {
+#     "name": "Ala",
+#     "info": {
+#         "contact": {"email": "ala@wp.pl", "phone": "123"},
+#         "grades": {"math": 5, "english": 4}
+#     }
+# }
+
+# update_info = {
+#     "info": {
+#         "contact": {"email": "ala@newmail.com"},
+#         "grades": {"physics": 6, "english": 5}
+#     }
+# }
+
+
+# 🧠 Zadanie:
+# Zaktualizuj student danymi z update_info,
+# tak aby:
+
+# nie stracić starych danych (phone, math),
+
+# zaktualizować email i english,
+# }
+# dodać physics.
+# # ***********************************************************************************************
+import copy 
+student = {
+    "name": "Ala",
+    "info": {
+        "contact": {"email": "ala@wp.pl", "phone": "123"},
+        "grades": {"math": 5, "english": 4}
+    }
+}
+
+update_info = {
+    "info": {
+        "contact": {"email": "ala@newmail.com"},
+        "grades": {"physics": 6, "english": 5}
+    },
+    "test":{
+        "test1":{"test2":"test3"}
+    }
+
+}
+updated_student={}
+updated_student=copy.deepcopy(student)
+for name, updates in update_info.items():
+    if name in updated_student:
+        for section, details in updates.items():
+            updated_student[name][section].update(details)
+    else:
+        updated_student[name]=updates
+print(updated_student)
+print(student)
