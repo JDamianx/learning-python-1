@@ -518,7 +518,7 @@ print(student)'''
 # # 5) nowa gałąź 'meta' dodana
 # assert result["meta"]["updated_at"] == "2025-10-28"
 # # ***********************************************************************************************
-import copy
+'''import copy
 profile = {
     "id": 101,
     "info": {
@@ -574,4 +574,112 @@ assert result["skills"]["python"]["level"] == "junior"
 assert result["skills"]["linux"]["level"] == "beginner"
 
 # 5) nowa gałąź 'meta' dodana
-assert result["meta"]["updated_at"] == "2025-10-28"
+assert result["meta"]["updated_at"] == "2025-10-28"'''
+# # ***********************************************************************************************
+# # ***********************************************************************************************
+# Zadanie 2.0 — “merge_settings”
+
+# Masz dwa słowniki:
+
+# config = {
+#     "app": {
+#         "theme": {"mode": "light", "font": "Roboto"},
+#         "language": "en"
+#     },
+#     "user": {
+#         "name": "Damian",
+#         "email": "damian@oldmail.com"
+#     },
+#     "security": {
+#         "2FA": False
+#     }
+# }
+
+# update = {
+#     "app": {
+#         "theme": {"mode": "dark"},   # ma nadpisać tylko 'mode', zachować 'font'
+#         "language": "pl"             # ma nadpisać cały klucz
+#     },
+#     "user": {
+#         "email": "damian@newmail.com",
+#         "notifications": {"email": True, "sms": False}
+#     },
+#     "security": {
+#         "2FA": True,
+#         "backup_codes": 5
+#     },
+#     "meta": {"updated": "2025-10-28"}
+# }
+
+# 🧠 Twoje zadanie:
+
+# Napisz funkcję:
+
+# def merge_settings(config, update):
+#     ...
+
+
+# która:
+
+# nie modyfikuje oryginalnego config,
+
+# zwraca nowy słownik po połączeniu obu,
+
+# zachowuje stare dane, jeśli nie są aktualizowane,
+
+# dodaje nowe, jeśli ich nie było.
+
+# ***********************************************************************************************
+import copy
+config = {
+    "app": {
+        "theme": {"mode": "light", "font": "Roboto"},
+        "language": "en"
+    },
+    "user": {
+        "name": "Damian",
+        "email": "damian@oldmail.com"
+    },
+    "security": {
+        "2FA": False
+    }
+}
+
+patch = {
+    "app": {
+        "theme": {"mode": "dark"},   # ma nadpisać tylko 'mode', zachować 'font'
+        "language": "pl"             # ma nadpisać cały klucz
+    },
+    "user": {
+        "email": "damian@newmail.com",
+        "notifications": {"email": True, "sms": False}
+    },
+    "security": {
+        "2FA": True,
+        "backup_codes": 5
+    },
+    "meta": {"updated": "2025-10-28"}
+}
+def merge_settings(config, update):
+    updated_config=copy.deepcopy(config)
+    for section,updates in update.items():
+        if section in updated_config:
+            for key, value in updates.items():
+                if key in updated_config[section] and isinstance(updated_config[section][key],dict) and isinstance(value, dict):
+                    updated_config[section][key].update(value)
+                else:
+                    updated_config[section][key]=value
+        else:
+            updated_config[section]=updates
+    return updated_config
+
+merged = merge_settings(config, patch)
+
+assert merged["app"]["theme"]["mode"] == "dark"
+assert merged["app"]["theme"]["font"] == "Roboto"
+assert merged["user"]["email"] == "damian@newmail.com"
+assert merged["user"]["notifications"]["sms"] == False
+assert merged["security"]["2FA"] == True
+assert merged["security"]["backup_codes"] == 5
+assert merged["meta"]["updated"] == "2025-10-28"
+assert config["user"]["email"] == "damian@oldmail.com"  # oryginał nietknięty
