@@ -32,7 +32,25 @@
 # t = tuple(my_list)
 # print(t)
 #  ******************************************************************************************
-colors = (("green", "#008000"), ("blue", "#0000FF"))
-colors_dictionary={color: id for color, id in colors}
+# colors = (("green", "#008000"), ("blue", "#0000FF"))
+# colors_dictionary={color: id for color, id in colors}
  
-print(colors_dictionary)
+# print(colors_dictionary)
+#  ******************************************************************************************
+# dictionary = {}
+# my_list = ['a', 'b', 'c', 'd']
+
+# for i in range(len(my_list) - 1):
+#     dictionary[my_list[i]] = (my_list[i], )
+
+# for i in sorted(dictionary.keys()):
+#     k = dictionary[i]
+#     print(k[0])
+
+
+# #  ******************************************************************************************
+# tup = (1, 2, 4, 8)
+# tup = tup[1:-1]
+# tup = tup[0]
+# print(tup)
+#  
