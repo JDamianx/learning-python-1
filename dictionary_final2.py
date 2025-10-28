@@ -435,7 +435,7 @@
 # }
 # dodać physics.
 # # ***********************************************************************************************
-import copy 
+'''import copy 
 student = {
     "name": "Ala",
     "info": {
@@ -463,4 +463,115 @@ for name, updates in update_info.items():
     else:
         updated_student[name]=updates
 print(updated_student)
-print(student)
+print(student)'''
+# # ***********************************************************************************************
+# # ***********************************************************************************************
+# profile = {
+#     "id": 101,
+#     "info": {
+#         "name": "Ala",
+#         "contact": {"email": "ala@wp.pl", "phone": "123"},
+#     },
+#     "skills": {
+#         "python": {"level": "junior", "years": 1},
+#         "english": {"level": "B2"}
+#     }
+# }
+
+# patch = {
+#     "info": {
+#         "contact": {"email": "ala@newmail.com"},  # ma zaktualizować email, NIE usuwać phone
+#     },
+#     "skills": {
+#         "python": {"years": 2},                    # ma nadpisać tylko 'years', zachować 'level'
+#         "linux": {"level": "beginner"}             # ma dodać zupełnie nową sekcję
+#     },
+#     "meta": {
+#         "updated_at": "2025-10-28"
+#     }
+# }
+# Wymagania
+# Nie modyfikuj profile. Zwróć nowy słownik.
+
+# Scalaj głęboko tylko słowniki (dict→dict). Inne typy nadpisuj (np. jeśli byłaby liczba lub string).
+
+# Zachowaj istniejące dane, gdy ich nie dotyka patch (np. numer telefonu).
+
+# Mini-testy (możesz wkleić obok swojej funkcji)
+
+# result = merge_profile(profile, patch)
+
+# 1) oryginał nienaruszony
+# assert profile["info"]["contact"]["email"] == "ala@wp.pl"
+
+# # 2) email zaktualizowany w wyniku, phone zachowany
+# assert result["info"]["contact"]["email"] == "ala@newmail.com"
+# assert result["info"]["contact"]["phone"] == "123"
+
+# # 3) python: years nadpisany, level zachowany
+# assert result["skills"]["python"]["years"] == 2
+# assert result["skills"]["python"]["level"] == "junior"
+
+# # 4) nowa sekcja 'linux' dodana
+# assert result["skills"]["linux"]["level"] == "beginner"
+
+# # 5) nowa gałąź 'meta' dodana
+# assert result["meta"]["updated_at"] == "2025-10-28"
+# # ***********************************************************************************************
+import copy
+profile = {
+    "id": 101,
+    "info": {
+        "name": "Ala",
+        "contact": {"email": "ala@wp.pl", "phone": "123"},
+    },
+    "skills": {
+        "python": {"level": "junior", "years": 1},
+        "english": {"level": "B2"}
+    }
+}
+
+patch = {
+    "info": {
+        "contact": {"email": "ala@newmail.com"},  # ma zaktualizować email, NIE usuwać phone
+    },
+    "skills": {
+        "python": {"years": 2},                    # ma nadpisać tylko 'years', zachować 'level'
+        "linux": {"level": "beginner"}             # ma dodać zupełnie nową sekcję
+    },
+    "meta": {
+        "updated_at": "2025-10-28"
+    }
+}
+def merge_profile(profile, patch):
+    updated_profile=copy.deepcopy(profile)
+    for section, updates in patch.items():
+        if section in updated_profile:
+            for key,value in updates.items():
+                if key in updated_profile[section] and isinstance(updated_profile[section][key],dict) and isinstance(value, dict):
+                    updated_profile[section][key].update(value)
+                else:
+                    updated_profile[section][key] = value
+        else:
+            updated_profile[section]=updates
+    return updated_profile
+print(merge_profile(profile, patch))
+
+result = merge_profile(profile, patch)
+# testy:
+# 1) oryginał nienaruszony
+assert profile["info"]["contact"]["email"] == "ala@wp.pl"
+
+# 2) email zaktualizowany w wyniku, phone zachowany
+assert result["info"]["contact"]["email"] == "ala@newmail.com"
+assert result["info"]["contact"]["phone"] == "123"
+
+# 3) python: years nadpisany, level zachowany
+assert result["skills"]["python"]["years"] == 2
+assert result["skills"]["python"]["level"] == "junior"
+
+# 4) nowa sekcja 'linux' dodana
+assert result["skills"]["linux"]["level"] == "beginner"
+
+# 5) nowa gałąź 'meta' dodana
+assert result["meta"]["updated_at"] == "2025-10-28"
