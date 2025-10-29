@@ -56,14 +56,19 @@ print(make_list_of_free_fields(board))
     # The function analyzes the board's status in order to check if 
     # the player using 'O's or 'X's has won the game
 
-
 def draw_move(board):
     # The function draws the computer's move and updates the board.
-    while True:
-        move=randrange(1,100)
-        if any(move in row for row in board): #check if randomized variable move is in board
-            break
-    print(move)
+    free_fields=make_list_of_free_fields(board) #it needs access to the free_fields dict
+    move=0
+    while move not in free_fields: #while loop true until find proper number within range 1-9
+        move=randrange(1,10)
+    row, col = free_fields[move] #assigning row,col to tuple from return of free_fields[move]
+    board[row][col] = 'X' #replacing 
+    del free_fields[move]
+    # print(move)
+    print(free_fields)
     return None
 draw_move(board)
+
     
+display_board(board)
